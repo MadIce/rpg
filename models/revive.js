@@ -10,7 +10,7 @@ var Revive = mongoose.model('Revive', {
        default: 0,
        max: 4
    },
-   expire_at : { type : Date, index : { expires : '60m' }, default: Date.now }
+   expire_at: {type: Date, default: Date.now, expires: 3600}
 });
 
 module.exports = {Revive};
