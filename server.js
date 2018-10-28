@@ -1198,7 +1198,7 @@ io.on('connection', (socket) => {
             var userDamage = Math.ceil((((2*userLevel/5) + 2) * (userPower * (userDex/(enemyVit + enemyDex)) / 50) + 4) + Math.random(0.9,1.1));
   
             var enemyPower = ((userDex + userStr) / 2) + userInt / 4;
-            var enemyDamage = Math.ceil((((2*enemyLevel/5) + 2) * (enemyPower * (enemyDex/(userVit + useDex)) / 50) + 4) + Math.random(0.9,1.1));
+            var enemyDamage = Math.ceil((((2*enemyLevel/5) + 2) * (enemyPower * (enemyDex/(userVit + userDex)) / 50) + 4) + Math.random(0.9,1.1));
         }
 
         if(userType === 'Magic' && enemyType === 'Magic'){
