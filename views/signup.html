@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <title>Mystery Of Dungeons</title>
+</head>
+<body>
+    <div class="container h-100">
+<div id="signup-screen" class="row h-100 justify-content-center align-items-center">
+        <h1 id="log-in-title">Mystery Of Dungeons</h1>    
+        <form class="col-4" id="login-form" action="/signup" method="POST">
+          {{#if errMsg}}
+          <div class="alert alert-danger">
+              <p>{{errMsg}}</p>
+          </div>  
+          {{/if}}               
+            <h6>Create new account</h6>
+          <div class="form-group">
+            <input type="text" class="form-control" name="username" id="username" placeholder="Username">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+          </div>
+          <div class="form-group">
+              <input type="checkbox" id="Check1" value="Ranged" name="type" onclick="selectOnlyThis(this.id)" class="ranged" /> Ranged
+
+              <input type="checkbox" id="Check2" value="Melee" name="type" onclick="selectOnlyThis(this.id)" class="meele" /> Melee
+
+              <input type="checkbox" id="Check3" value="Magic" name="type" onclick="selectOnlyThis(this.id)" class="magic" /> Magic
+
+          </div> 
+
+          <div id="melees" hidden>
+              <input type="radio" name="charSkin" value="char18">
+            <img src="/img/chars/char18.png">
+            <input type="radio" name="charSkin" value="char19">
+            <img src="/img/chars/char19.png">
+            <input type="radio" name="charSkin" value="char20">
+            <img src="/img/chars/char20.png">
+            <input type="radio" name="charSkin" value="char21">
+            <img src="/img/chars/char21.png"><br>
+            <input type="radio" name="charSkin" value="char22">
+            <img src="/img/chars/char22.png">
+            <input type="radio" name="charSkin" value="char23">
+            <img src="/img/chars/char23.png">
+            <input type="radio" name="charSkin" value="char24">
+            <img src="/img/chars/char24.png">
+            <input type="radio" name="charSkin" value="char25">
+            <img src="/img/chars/char25.png">
+          </div>
+
+
+          <div id="wizards" hidden>
+              <input type="radio" name="charSkin" value="char1">
+              <img src="/img/chars/char1.png">
+              <input type="radio" name="charSkin" value="char2">
+              <img src="/img/chars/char2.png">
+              <input type="radio" name="charSkin" value="char3">
+              <img src="/img/chars/char3.png">
+              <input type="radio" name="charSkin" value="char4">
+              <img src="/img/chars/char4.png"><br>
+              <input type="radio" name="charSkin" value="char5">
+              <img src="/img/chars/char5.png">
+              <input type="radio" name="charSkin" value="char6">
+              <img src="/img/chars/char6.png">
+              <input type="radio" name="charSkin" value="char7">
+              <img src="/img/chars/char7.png">
+              <input type="radio" name="charSkin" value="char8">
+              <img src="/img/chars/char8.png">
+            </div>
+
+          <div id="rangers" hidden>
+              <input type="radio" name="charSkin" value="char9">
+              <img src="/img/chars/char9.png">
+              <input type="radio" name="charSkin" value="char10">
+              <img src="/img/chars/char10.png">
+              <input type="radio" name="charSkin" value="char11">
+              <img src="/img/chars/char11.png">
+              <input type="radio" name="charSkin" value="char12">
+              <img src="/img/chars/char12.png"><br>
+              <input type="radio" name="charSkin" value="char14">
+              <img src="/img/chars/char14.png">
+              <input type="radio" name="charSkin" value="char15">
+              <img src="/img/chars/char15.png">
+              <input type="radio" name="charSkin" value="char16">
+              <img src="/img/chars/char16.png">
+              <input type="radio" name="charSkin" value="char17">
+              <img src="/img/chars/char17.png">
+          </div>
+
+          <button type="submit" class="btn btn-dark submitBtn"><span style="color: black"><i class="fas fa-check"></i> Sign Up</span></button>
+        </form>   
+</div> 
+</div>
+</div>
+<script src="/js/signup.js"></script>
+<script>
+
+$(function(){
+  $('input[type="radio"]').click(function(){
+    if ($(this).is(':checked'))
+    {
+      $(this).css( "background-color: red" );
+    }
+  });
+});
+
+$(document).ready(function () {
+    $("#login-form").submit(function () {
+        $(".submitBtn").attr("disabled", true);
+        return true;
+    });
+});
+
+  function selectOnlyThis(id) {
+  for (var i = 1;i <= 3; i++)
+  {
+      document.getElementById("Check" + i).checked = false;
+  }
+  document.getElementById(id).checked = true;   
+  }
+</script>
+</body>
+</html>

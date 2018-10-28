@@ -1,0 +1,62 @@
+<div class="row">
+        <div class="col-md-8">
+                 <div class="panel panel-default">
+                    <div class="panel-heading">
+                    <strong><span class="panel-title">User Profile</span></strong>
+                    </div>
+                <div class="panel-body clearfix">
+                        <div class="text-center">
+                            <img src="/img/torch.gif" style="height: 45px"><span style="font-family: 'Bellefair'; font-size: 20px">User Profile</span><img src="/img/torch.gif" style="height: 45px">
+                        
+                        <br>
+                        <img src="/img/market/str.png" style="height: 30px"> <strong>{{userProfile.strength}}</strong>
+                        <img src="/img/market/dex.png" style="height: 30px"> <strong>{{userProfile.dexterity}}</strong>
+                        <img src="/img/market/vit.png" style="height: 30px"> <strong>{{userProfile.vitality}}</strong>
+                        <img src="/img/market/intel.png" style="height: 30px"> <strong>{{userProfile.intellect}}</strong>
+
+                        </div> 
+                            <p class="float-right" style="width: 250px">Gold: <strong>{{userProfile.gold}}</strong>
+                            <img src="/img/gold.png" style="margin-top: -1%">
+                            <br><br>
+                            Inventory: 
+                            {{#each items}}
+                                <img src="{{this.item_img}}">
+                                {{else}}
+                                <i>No items currently.</i>
+                            {{/each}} 
+                            <br><br>
+                            <strong>Arena Statistics:</strong><br>
+                            Arena Wins: <strong>{{userProfile.fights_win}}</strong><br>
+                            Arena Losses: <strong>{{userProfile.fights_lost}}</strong>
+                            <br>
+                            
+                            {{#if (eq user.username userProfile.username)}}
+
+                            {{else}}
+                           
+                                {{#if (eq user.health 0)}}
+                              <button type="button" class="btn" style="background: grey" data-toggle="modal" data-target="#restoreHealth">
+                                 FIGHT ⚔️
+                              </button>
+                             
+                                {{else}}
+                            <a href="/arena/fight/user/{{userProfile.username}}" class="btn btn-danger">
+                                    FIGHT ⚔️
+                            </a>   
+                                {{/if}}
+                            {{/if}}
+
+                        </p>         
+                      <h6>Username: {{userProfile.username}}</h6>
+                      <img src="/img/chars/{{userProfile.skin}}.png">
+
+                      <p>(<strong>{{userProfile.type}}</strong>)</p>
+                      <p>Level: <strong>{{userProfile.level}}</strong></p>
+                      <p>EXP: <strong>{{userProfile.current_exp}}</strong></p>
+                      <p>Registered on: <strong>{{userProfile.createdAt}}</strong></p>
+                      <p>Last login: <strong>{{userProfile.last_login}}</strong></p>                    
+                </div>
+        </div>
+        </div>
+        {{> userInterface}}
+        </div>

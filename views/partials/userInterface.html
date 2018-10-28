@@ -1,0 +1,134 @@
+<div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+              <strong><span class="panel-title">Character</span></strong>
+            </div>
+                <div class="panel-body">
+                <div class="float-right">
+    
+                    {{#if (eq user.upgradePoints 0) }}
+                    <p>
+                        <img src="/img/market/str.png" style="height: 20px">
+                        Strength: <strong>{{user.strength}}/100 <small style="color: #1bff4f">+<span id="strId">{{user.items_strength}}</span></small></strong></p>
+                    <p>
+                        <img src="/img/market/dex.png" style="height: 20px">
+                        Dexterity: <strong>{{user.dexterity}}/100 <small style="color: #1bff4f">+<span id="dexId">{{user.items_dexterity}}</span></small></strong></p>
+                    <p>
+                        <img src="/img/market/vit.png" style="height: 20px"> 
+                        Vitality: <strong>{{user.vitality}}/100 <small style="color: #1bff4f">+<span id="vitId">{{user.items_vitality}}</span></small></strong></p>
+                    <p>
+                        <img src="/img/market/intel.png" style="height: 20px"> 
+                        Intellect: <strong>{{user.intellect}}/100 <small style="color: #1bff4f">+<span id="intId">{{user.items_intellect}}</span></small></strong></p>	
+                    
+                    {{else}}
+    
+                    <p>
+                        <img src="/img/market/str.png" style="height: 20px">
+                        Strength: <strong><span id="strengthId">{{user.strength}}</span>/100 <small style="color: #1bff4f">+<span id="strId">{{user.items_strength}}</span></small> </strong>
+                        <span id="strBtn">
+                        <a style="cursor: pointer; text-decoration: none;" class="upgrade-strength btn-sm btn-success" id="{{user._id}}">+</a>
+                        </span>
+                        </p>
+                    
+                    <p>
+                        <img src="/img/market/dex.png" style="height: 20px"> 
+                        Dexterity: <strong><span id="dexterityId">{{user.dexterity}}</span>/100 <small style="color: #1bff4f">+<span id="dexId">{{user.items_dexterity}}</span></small>
+                        <span id="dexBtn">
+                        <a style="cursor: pointer; text-decoration: none;" class="upgrade-dexterity btn-sm btn-success" id="{{user._id}}">+</a>
+                        </span></strong>
+                        </p>
+                    
+                    <p>
+                        <img src="/img/market/vit.png" style="height: 20px">
+                        Vitality: <strong><span id="vitalityId">{{user.vitality}}</span>/100 <small style="color: #1bff4f">+<span id="vitId">{{user.items_vitality}}</span></small>
+                        <span id="vitBtn">
+                        <a style="cursor: pointer; text-decoration: none;" class="upgrade-vitality btn-sm btn-success" id="{{user._id}}">+</a>
+                        </span></strong>
+                        </p>
+                    
+                    <p>
+                        <img src="/img/market/intel.png" style="height: 20px">
+                        Intellect: <strong><span id="intellectId">{{user.intellect}}</span>/100 <small style="color: #1bff4f">+<span id="intId">{{user.items_intellect}}</span></small>
+                        <span id="intBtn">
+                        <a style="cursor: pointer; text-decoration: none;" class="upgrade-intellect btn-sm btn-success" id="{{user._id}}">+</a>
+                        </span></strong>
+                        </p>
+                    {{/if}}
+                    <p>Available points: <strong><span id="points">{{user.upgradePoints}}</span></strong></p>
+
+                    {{#if (eq user.health 0)}}
+                        <div id="arenaBtn">
+                          <button type="button" class="btn" style="background: grey; float: right" data-toggle="modal" data-target="#restoreHealth">
+                             ARENA ⚔️
+                          </button>
+                        </div>  
+                        {{else if (gt user.health 0)}}  
+                        <a href="/arena" class="btn btn-danger" style="float: right">
+                                ARENA ⚔️
+                        </a>   
+                        {{/if}}            
+            </div>
+            <img src="/img/chars/{{user.skin}}.png" style="height: 90px">
+            <p><strong><span id="username"><a href="/character/{{user.username}}" class="user-link">{{user.username}}</a></span>
+                <span id="userId" hidden>{{user._id}}</span>
+                <br>
+                ({{user.type}})</strong></p>
+            <p>Level: <strong>{{user.level}}</strong></p>
+            <p>EXP: <strong>{{user.current_exp}}</strong>            
+            </p>
+            
+                    <div class="progress position-relative" style="background-color: red; width: 100%">
+                            <div class="progress-bar" role="progressbar" style="width: {{user.health}}%" aria-valuenow="{{user.health}}" aria-valuemin="0" aria-valuemax="100"></div>
+                            <small class="justify-content-center d-flex position-absolute w-100"><strong>
+                                    HP:<span id="userHealth">{{user.health}}</span>/100</strong></small>
+                    </div>                    
+                    
+            <p>Gold: <strong><span id="userGold">{{user.gold}}</span> <img src="/img/gold.png"></strong></p>
+            <p>Inventory:<br>
+                <div id="inventory">
+                {{#each userItems}}
+                <div class="popup" onclick="itemPopup('myPopup{{this._id}}')">
+                <img src="{{this.item_img}}" class="itemId" alt="">  
+                <span style="display: none" class="boughtItemId">{{this._id}}</span>
+                <span style="display: none" class="title">{{this.item_title}}</span>
+                <span style="display: none" class="itemType">{{this.item_type}}</span>
+                <span class="popuptext" id="myPopup{{this._id}}">
+                    Power:<p class="power">{{this.item_power}}</p>
+                    {{#if (eq this.item_type "Health")}}
+                    <button class="btn btn-danger eatBtn"><small>Eat it</small></button>
+                    {{else}}
+                    <button class="btn btn-danger sellBtn"><small>Sell for <span class="itemPrice">{{this.item_price}}</span> <img src="/img/gold.png" /></small></button>
+                    {{/if}}
+                </span>	                
+                </div>
+                {{/each}}
+                </div> 
+            </p>
+        </div>
+    </div>
+
+
+    <div class="panel panel-default">
+            <div class="panel-heading">
+              <strong><span class="panel-title">Revive</span></strong>
+            </div>
+                <div class="panel-body text-center">
+                    <p>Restore HP to 100</p>
+                    <div id="reviveInfo">
+                 <a href="/revive/{{user._id}}" class="revive"><img src="/img/heart.png" alt=""> Revive</a>   
+                    </div>
+                 <p>Count: 
+                     <span id="reviveCount">
+                         {{#if revive.count}}
+                         {{revive.count}}
+                         {{else}}
+                         0
+                         {{/if}}
+                    </span>/ 3<br>
+                    Revives resets every hour
+                </p>
+                </div>
+            </div>
+    </div>
+
+<script src="/js/userinterface.js"></script>   

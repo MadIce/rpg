@@ -1,0 +1,67 @@
+<div class="row">
+        <div class="col-md-8">
+                 <div class="panel panel-default">
+                    <div class="panel-heading">
+                    <strong><span class="panel-title">Arena</span></strong>
+                    </div>
+                <div class="panel-body">
+                    
+                <div class="text-center">
+                    <img src="/img/torch.gif" style="height: 45px"><span style="font-family: 'Bellefair'; font-size: 20px">MoD Arena</span><img src="/img/torch.gif" style="height: 45px">
+                  <br>
+                    <small><span style="color: red">Reminder:</span> You cannot fight same user twice. Wait at least 60 seconds.</small>
+                  </div> 
+                
+                {{#if errMsg}}
+                <div class="alert alert-danger">
+                    <p>{{errMsg}}</p>
+                </div>  
+                {{/if}}
+               
+                <table>
+                        <tr>
+                          <th>Username</th>
+                          <th>Items</th>
+                          <th>Level</th>
+                          <th>Wins</th>
+                          <th>Losses</th>
+                         
+                        </tr>
+                        {{#each users}}
+
+                        <tr>
+                          <td>
+                            <img src="/img/chars/{{this.skin}}.png" style="height: 35px">
+                            
+                            <a href="/arena/fight/user/{{this.username}}" class="user-link"><strong>{{this.username}}</strong></a> ({{this.type}})<br>
+                            
+                            <span style="font-size: 11px">
+                            <img src="/img/market/str.png" style="height: 20px"> {{this.strength}}
+                            <img src="/img/market/dex.png" style="height: 20px"> {{this.dexterity}}
+                            <img src="/img/market/vit.png" style="height: 20px"> {{this.vitality}}
+                            <img src="/img/market/intel.png" style="height: 20px"> {{this.intellect}}
+                            </span>
+                        
+                        </td>
+                        <td style="width: 237px"> 
+
+                                {{#each boughtitems}}
+                                  <img src="{{this.item_img}}">
+                                {{/each}}
+    
+                              </td>
+
+
+                          <td>{{this.level}}</td>
+                          <td>{{this.fights_win}}</td>
+                          <td>{{this.fights_lost}}</td>  
+                        </tr>
+                    
+                        {{/each}}
+                </table>
+                      
+        </div>
+        </div>
+        </div>
+        {{> userInterface}}
+        </div>

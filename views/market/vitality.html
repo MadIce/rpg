@@ -1,0 +1,40 @@
+<div class="row">
+        <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                    <strong><span class="panel-title">Mystery Of Dungeons</span></strong>
+                    </div>
+                <div class="panel-body">
+                
+                <div class="text-center">
+                    <img src="/img/torch.gif" style="height: 45px">
+                    <span style="font-family: 'Bellefair'; font-size: 20px">Vitality Market</span><img src="/img/torch.gif" style="height: 45px">
+                </div>
+                <div class="row">
+                        {{#each items}}
+                <div class="col-md-3">
+                        <ul style="list-style: none;">
+                            <li class="text-center">
+                        <div class="popup" onclick="itemPopup('myPopup{{this._id}}')">		
+                            <img class="item" id="itemImg" src="{{this.img}}"><br>
+                        <span class="popuptext" id="myPopup{{this._id}}">
+                            Increase vitality power by <span class="power">{{this.power}}</span> points                        </span>	
+                </div>
+                <br>
+                    <p><span class="title">{{this.title}}</span>
+                    <button class="btn btn-danger buyItem" style="font-size: 12px" id="{{this._id}}">
+                    Buy | <span class="price">{{this.price}}</span> <img src="/img/gold.png"></button>
+                    </p>
+                </li>
+                </ul>
+                
+                </div>
+                {{/each}} 
+                </div>       
+                   
+                </div>
+                </div>
+        </div>
+
+{{> userInterface}}
+<script src="/js/vitality.js"></script>

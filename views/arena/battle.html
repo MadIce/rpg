@@ -1,0 +1,147 @@
+<div class="row">
+<div class="col-md-12">
+        <div class="panel panel-default text-center">
+            <div class="panel-heading"><span class="panel-title">
+            Fight against <strong>{{user.username}}</strong> and <strong>{{enemy.username}}</strong>
+        </span>
+        </div>
+            <div class="panel-body">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="/img/chars/{{user.skin}}.png" style=" image-rendering: -webkit-optimize-contrast;"><br>
+
+                <span id="userName"><a href="/character/{{user.username}}" class="user-link">{{user.username}}</a></span>
+                <span hidden="" id="userID">{{user._id}}</span><br>
+                <span id="userType"><strong>{{user.type}}</strong></span>
+                <br><br>
+                <div class="progress position-relative" style="background-color: red">
+                        <div class="progress-bar user-bar" role="progressbar" id="userBar" style="width: {{user.health}}%" aria-valuenow="{{user.health}}" aria-valuemin="0" aria-valuemax="100"></div>
+                        <small class="justify-content-center d-flex position-absolute w-100"><strong>
+                                HP:<span id="userHealth">{{user.health}}</span>/100</strong></small>
+                </div> 
+        
+                <p>Level: <strong><span id="userLevel">{{user.level}}</span></strong></p>
+            <p>
+            <img src="/img/market/str.png" style="height: 20px">   
+            Strength: <strong><span id="userStr">{{user.strength}}</span></strong></p>
+            <p>
+            <img src="/img/market/dex.png" style="height: 20px">  
+            Dexterity: <strong><span id="userDex">{{user.dexterity}}</span></strong></p>
+            <p>
+            <img src="/img/market/vit.png" style="height: 20px">       
+            Vitality: <strong><span id="userVit">{{user.vitality}}</span></strong></p>
+            <p>
+            <img src="/img/market/intel.png" style="height: 20px">      
+            Intellect: <strong><span id="userIntel">{{user.intellect}}</span></strong></p>
+        
+            {{#each userItems}}
+            <div class="popup" onclick="itemPopup('myPopup{{this._id}}')">
+                {{#if (eq this.item_type "Health")}}
+                
+                {{else}}                  
+            <img src="{{this.item_img}}" class="itemId" alt=""> 
+                {{/if}} 
+            <span class="popuptext" id="myPopup{{this._id}}">
+                {{#if (eq this.item_type "Dexterity")}}
+                Increased dexterity power by <span class="power">{{this.item_power}}</span> points
+                {{/if}}
+                {{#if (eq this.item_type "Strength")}}
+                Increased strength power by <span class="power">{{this.item_power}}</span> points
+                {{/if}}    
+                {{#if (eq this.item_type "Vitality")}}
+                Increased vitality power by <span class="power">{{this.item_power}}</span> points
+                {{/if}}     
+                {{#if (eq this.item_type "Intellect")}}
+                Increased intellect power by <span class="power">{{this.item_power}}</span> points
+                {{/if}}          
+                {{#if (eq this.item_type "Health")}}
+                    Not usable
+                {{/if}}                                             
+            </span>	                
+            </div>
+            {{/each}}  
+        
+        </div>
+    
+
+
+        <div class="col-md-4" style="margin-top: 5%">
+            
+                <span id="rewardBtn">
+                <button class="btn btn-danger attBtn" id="{{enemy._id}}" style="font-size: 24px"><span id="innerAttBtn">Attack 👊🏼</span></button>
+                </span>
+                <br><br>
+                <p id="fightInfo">
+                        <img src="/img/loading.gif" id="loading-image" style="display:none">
+
+                </p>
+                <br>
+                <a href="/" class="btn btn-default" id="escapeBtn" style="background: #01a7f4; color: white; text-decoration: none; border: 1px solid">Escape Fight 🔥
+                </a>
+        
+            </div>
+
+
+
+        <div class="col-md-4">
+                <img src="/img/chars/{{enemy.skin}}.png" style="image-rendering: -webkit-optimize-contrast; -webkit-transform: scaleX(-1); transform: scaleX(-1);"><br>
+                <span id="enemyName"><a href="/character/{{enemy.username}}" class="user-link">{{enemy.username}}</a></span>
+                <span hidden="" id="enemyID">{{enemy._id}}</span><br>
+                <span id="enemyType"><strong>{{enemy.type}}</strong></span>
+                <br><br>
+                <div class="progress position-relative" style="background-color: red">
+                        <div class="progress-bar enemy-bar" role="progressbar" id="enemyBar" style="width: 100%" aria-valuenow="{{enemy.health}}" aria-valuemin="0" aria-valuemax="100"></div>
+                        <small class="justify-content-center d-flex position-absolute w-100"><strong>
+                                HP:<span id="enemyHealth">100</span>/100</strong></small>
+                </div> 
+        
+                <p>Level: <strong><span id="enemyLevel">{{enemy.level}}</span></strong></p>
+            <p>
+            <img src="/img/market/str.png" style="height: 20px">    
+            Strength: <strong><span id="enemyStr">{{enemy.strength}}</span></strong></p>
+            <p>
+            <img src="/img/market/dex.png" style="height: 20px">  
+            Dexterity: <strong><span id="enemyDex">{{enemy.dexterity}}</span></strong></p>
+            <p>
+            <img src="/img/market/vit.png" style="height: 20px">      
+            Vitality: <strong><span id="enemyVit">{{enemy.vitality}}</span></strong></p>
+            <p>
+            <img src="/img/market/intel.png" style="height: 20px">        
+            Intellect: <strong><span id="enemyIntel">{{enemy.intellect}}</span></strong></p>
+        
+            {{#each enemyItems}}
+            <div class="popup" onclick="itemPopup('myPopup{{this._id}}')">
+                {{#if (eq this.item_type "Health")}}
+                
+                {{else}}                  
+            <img src="{{this.item_img}}" class="itemId" alt=""> 
+                {{/if}}
+            <span class="popuptext" id="myPopup{{this._id}}">
+                {{#if (eq this.item_type "Dexterity")}}
+                Increased dexterity power by <span class="power">{{this.item_power}}</span> points
+                {{/if}}
+                {{#if (eq this.item_type "Strength")}}
+                Increased strength power by <span class="power">{{this.item_power}}</span> points
+                {{/if}}    
+                {{#if (eq this.item_type "Vitality")}}
+                Increased vitality power by <span class="power">{{this.item_power}}</span> points
+                {{/if}}     
+                {{#if (eq this.item_type "Intellect")}}
+                Increased intellect power by <span class="power">{{this.item_power}}</span> points
+                {{/if}}  
+                {{#if (eq this.item_type "Health")}}
+                    Not usable
+                {{/if}}
+            </span>	                
+            </div>
+            {{/each}}          
+        
+        </div>
+
+            </div>
+            </div>
+        </div>
+        </div> 
+</div>
+<script src="/js/battle.js"></script>
+

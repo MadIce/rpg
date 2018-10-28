@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/char.js"></script>
+    <script>var socket = io();</script>
+    <title>Mystery Of Dungeons</title>
+</head>
+<body>
+      
+    <div class="container h-100">
+        <div class="row">
+            <div class="col-md-12">
+
+                    {{> nav}}  
+            
+
+                    <div class="panel panel-default">
+                            <div class="panel-heading">
+                            <strong><span class="panel-title">Livestream</span></strong>
+                            </div>
+                        <div class="panel-body livestream" style="padding-left: 5%">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <h6>Market</h6>
+                              <span class="live">
+                                    {{#each liveitems}}
+                                <small>{{this.createdAt}}
+                                  <strong class="username-live"><a href="/character/{{this.username}}" class="user-link">{{this.username}}</a></strong> bought 
+                                  <img src="{{this.item_img}}" alt=""> 
+                                  {{this.item_title}} for {{this.item_price}} <img src="/img/gold.png" style="margin-top: -1%; height: 8px" alt="">
+                                </small>
+                                <br>
+                                {{/each}}
+                              </span>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                    <h6>Arena Wins</h6>
+                                    <span class="liveFights">
+                                          {{#each fights}}
+                                      <small>{{this.createdAt}}
+                                        <strong class="username-live"><a href="/character/{{this.username}}" class="user-link">{{this.username}}</a></strong> won fight versus 
+                                        <strong class="username-live"><a href="/character/{{this.enemyname}}" class="user-link">{{this.enemyname}}</a></strong> 
+                                        and gain {{this.gold}} <img src="/img/gold.png" style="margin-top: -1%; height: 8px" alt=""> 
+                                        with {{this.exp}} exp points
+                                      </small>
+                                      <br>
+                                      {{/each}}
+                                    </span>
+                                  </div>
+            
+                                  <div class="col-md-4">
+                                        <h6>Arena Losses</h6>
+                                        <span class="lostFights">
+                                                {{#each lostFights}}
+                                                <small>{{this.createdAt}}
+                                                  <strong class="username-live"><a href="/character/{{this.username}}" class="user-link">{{this.username}}</a></strong> lost fight versus 
+                                                  <strong class="username-live"><a href="/character/{{this.enemyname}}" class="user-link">{{this.enemyname}}</a></strong> 
+                                                </small>
+                                                <br>
+                                                {{/each}}
+                                        </span>
+                                      </div>
+            
+                        </div>
+              
+                        </div>
+                        </div>
+
+            </div>
+            </div>
+        {{{body}}}
+        <script src="/js/main.js"></script>
+        <script>
+        function itemPopup(ID) {
+                var popup = document.getElementById(ID);
+                popup.classList.toggle("show");
+            }
+        </script>        
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<div class="row">
+<div class="col-md-8">
+         <div class="panel panel-default">
+            <div class="panel-heading">
+            <strong><span class="panel-title">Leaderboard</span></strong>
+            </div>
+        <div class="panel-body">
+            
+        <div class="text-center">
+            <img src="/img/torch.gif" style="height: 45px"><span style="font-family: 'Bellefair'; font-size: 20px">Leaderboard</span><img src="/img/torch.gif" style="height: 45px">
+        </div> 
+        
+
+        <ol class="text-center">
+          {{#each users}}
+          <li>
+            <img src="/img/chars/{{this.skin}}.png" style="height: 35px">
+            <a href="/character/{{this.username}}" class="user-link"><strong>{{this.username}}</strong></a> ({{this.type}})</td>
+            <div id="level">
+            <strong>Exp:</strong> {{this.current_exp}}
+            <strong>Level:</strong> {{this.level}}
+            <strong>Arena Wins:</strong> {{this.fights_win}}
+            <strong>Arena Losses:</strong> {{this.fights_lost}}
+            </div>
+          </li>
+          {{/each}}
+        </ol>
+              
+</div>
+</div>
+</div>
+{{> userInterface}}
+</div>
