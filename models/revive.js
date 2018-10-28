@@ -8,7 +8,7 @@ var Revive = mongoose.model('Revive', {
    count: {
        type: Number,
        default: 0,
-       max: 4
+       max: 3
    },
    expire_at : { type : Date, index : { expires : '60m' }, default: Date.now }
 
