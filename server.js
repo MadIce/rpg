@@ -1185,7 +1185,7 @@ io.on('connection', (socket) => {
        	if(userType === 'Magic' && enemyType === 'Ranged'){
 
       	var userPower = ((userDex + userInt) / 2) + userStr / 4;
-      	var userDamage = Math.ceil((((2*userLevel/5) + 2) * (userPower * (userInt/(enemyVit + enemyInt)) / 50) + 4) + Math.random(0.9,1.1));
+      	var userDamage = Math.ceil((((2*userLevel/5) + 2) * (userPower * (userDex/(enemyVit + enemyDex)) / 50) + 4) + Math.random(0.9,1.1));
 
       	var enemyPower = ((enemyDex + enemyStr) / 2) + enemyInt / 4;
       	var enemyDamage = Math.ceil((((2*enemyLevel/5) + 2) * (enemyPower * (enemyDex/(userVit + userDex)) / 50) + 4) + Math.random(0.9,1.1));
@@ -1195,19 +1195,19 @@ io.on('connection', (socket) => {
       	if(userType === 'Magic' && enemyType === 'Melee'){
 
             var userPower = ((userDex + userInt) / 2) + userStr / 4;
-            var userDamage = Math.ceil((((2*userLevel/5) + 2) * (userPower * (userInt/(enemyVit + enemyInt)) / 50) + 4) + Math.random(0.9,1.1));
+            var userDamage = Math.ceil((((2*userLevel/5) + 2) * (userPower * (userDex/(enemyVit + enemyDex)) / 50) + 4) + Math.random(0.9,1.1));
   
             var enemyPower = ((userDex + userStr) / 2) + userInt / 4;
-            var enemyDamage = Math.ceil((((2*enemyLevel/5) + 2) * (enemyPower * (enemyStr/(userVit + userStr)) / 50) + 4) + Math.random(0.9,1.1));
+            var enemyDamage = Math.ceil((((2*enemyLevel/5) + 2) * (enemyPower * (enemyDex/(userVit + useDex)) / 50) + 4) + Math.random(0.9,1.1));
         }
 
         if(userType === 'Magic' && enemyType === 'Magic'){
 
             var userPower = ((userDex + userInt) / 2) + userStr / 4;
-            var userDamage = Math.ceil((((2*userLevel/5) + 2) * (userPower * (userInt/(enemyVit + enemyInt)) / 50) + 4) + Math.random(0.9,1.1));
+            var userDamage = Math.ceil((((2*userLevel/5) + 2) * (userPower * (userDex/(enemyVit + enemyDex)) / 50) + 4) + Math.random(0.9,1.1));
   
             var enemyPower = ((userDex + userInt) / 2) + userStr / 4;
-            var enemyDamage = Math.ceil((((2*enemyLevel/5) + 2) * (enemyPower * (enemyInt/(userVit + userInt)) / 50) + 4) + Math.random(0.9,1.1));
+            var enemyDamage = Math.ceil((((2*enemyLevel/5) + 2) * (enemyPower * (enemyDex/(userVit + userDex)) / 50) + 4) + Math.random(0.9,1.1));
         }
 
 
@@ -1217,7 +1217,7 @@ io.on('connection', (socket) => {
             var userDamage = Math.ceil((((2*userLevel/5) + 2) * (userPower * (userDex/(enemyVit + enemyDex)) / 50) + 4) + Math.random(0.9,1.1));
   
             var enemyPower = ((enemyDex + enemyInt) / 2) + enemyStr / 4;
-            var enemyDamage = Math.ceil((((2*enemyLevel/5) + 2) * (enemyPower * (enemyInt/(userVit + userInt)) / 50) + 4) + Math.random(0.9,1.1));
+            var enemyDamage = Math.ceil((((2*enemyLevel/5) + 2) * (enemyPower * (enemyDex/(userVit + userDex)) / 50) + 4) + Math.random(0.9,1.1));
         }
 
 
@@ -1227,7 +1227,7 @@ io.on('connection', (socket) => {
             var userDamage = Math.ceil((((2*userLevel/5) + 2) * (userPower * (userDex/(enemyVit + enemyDex)) / 50) + 4) + Math.random(0.9,1.1));
   
             var enemyPower = ((enemyDex + enemyStr) / 2) + enemyInt / 4;
-            var enemyDamage = Math.ceil((((2*enemyLevel/5) + 2) * (enemyPower * (enemyStr/(userVit + userStr)) / 50) + 4) + Math.random(0.9,1.1));
+            var enemyDamage = Math.ceil((((2*enemyLevel/5) + 2) * (enemyPower * (enemyDex/(userVit + userDex)) / 50) + 4) + Math.random(0.9,1.1));
         }
 
 
@@ -1244,10 +1244,10 @@ io.on('connection', (socket) => {
         if(userType === 'Melee' && enemyType === 'Magic'){
 
             var userPower = ((userDex + userStr) / 2) + userInt / 4;
-            var userDamage = Math.ceil((((2*userLevel/5) + 2) * (userPower * (userStr/(enemyVit + enemyStr)) / 50) + 4) + Math.random(0.9,1.1));
+            var userDamage = Math.ceil((((2*userLevel/5) + 2) * (userPower * (userDex/(enemyVit + enemyDex)) / 50) + 4) + Math.random(0.9,1.1));
   
             var enemyPower = ((enemyDex + enemyInt) / 2) + enemyStr / 4;
-            var enemyDamage = Math.ceil((((2*enemyLevel/5) + 2) * (enemyPower * (enemyInt/(userVit + userInt)) / 50) + 4) + Math.random(0.9,1.1));
+            var enemyDamage = Math.ceil((((2*enemyLevel/5) + 2) * (enemyPower * (enemyDex/(userDex + userDex)) / 50) + 4) + Math.random(0.9,1.1));
         }        
 
 
@@ -1255,7 +1255,7 @@ io.on('connection', (socket) => {
       	if(userType === 'Melee' && enemyType === 'Ranged'){
 
       	var userPower = ((userDex + userStr) / 2) + userInt / 4;
-      	var userDamage = Math.ceil((((2*userLevel/5) + 2) * (userPower * (userStr/(enemyVit + enemyStr)) / 50) + 4) + Math.random(0.9,1.1));
+      	var userDamage = Math.ceil((((2*userLevel/5) + 2) * (userPower * (userDex/(enemyVit + enemyDex)) / 50) + 4) + Math.random(0.9,1.1));
 
 		var enemyPower = ((enemyDex + enemyStr) / 2) + enemyInt / 4;
       	var enemyDamage = Math.ceil((((2*enemyLevel/5) + 2) * (enemyPower * (enemyDex/(userVit + userDex)) / 50) + 4) + Math.random(0.9,1.1));
@@ -1265,12 +1265,11 @@ io.on('connection', (socket) => {
       	if(userType === 'Melee' && enemyType === 'Melee'){
 
       	var userPower = ((userDex + userStr) / 2) + userInt / 4;
-      	var userDamage = Math.ceil((((2*userLevel/5) + 2) * (userPower * (userStr/(enemyVit + enemyStr)) / 50) + 4) + Math.random(0.9,1.1));
+      	var userDamage = Math.ceil((((2*userLevel/5) + 2) * (userPower * (userDex/(enemyVit + enemyDex)) / 50) + 4) + Math.random(0.9,1.1));
 
 		var enemyPower = ((enemyDex + enemyStr) / 2) + enemyInt / 4;
-      	var enemyDamage = Math.ceil((((2*enemyLevel/5) + 2) * (enemyPower * (enemyStr/(userVit + userStr)) / 50) + 4) + Math.random(0.9,1.1));
+      	var enemyDamage = Math.ceil((((2*enemyLevel/5) + 2) * (enemyPower * (enemyDex/(userVit + userDex)) / 50) + 4) + Math.random(0.9,1.1));
       	}
-
 
                         var userDmg = userDamage;
                         var enemyDmg = enemyDamage;
