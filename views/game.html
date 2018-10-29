@@ -258,6 +258,59 @@
             </div>          
     </div>
 <div class="row">
-{{> news}}
 
 {{> userInterface}}
+          <div class="col-md-4">
+        <div class="panel panel-default">
+                <div class="panel-heading">
+                  <strong><span class="panel-title">Revive</span></strong>
+                </div>
+                    <div class="panel-body text-center">
+                        <p>Restore HP to 100</p>
+                        <div id="reviveInfo">
+                     <a href="/revive/{{user._id}}" class="revive"><img src="/img/heart.png" alt=""> Revive</a>   
+                        </div>
+                     <p>Count: 
+                         <span id="reviveCount">
+                             {{#if revive.count}}
+                             {{revive.count}}
+                             {{else}}
+                             0
+                             {{/if}}
+                        </span>/ 3<br>
+                        Revives resets every hour
+                    </p>
+                    </div>
+                </div>
+</div>
+
+<div class="col-md-4">
+
+        <div class="panel panel-default">
+                <div class="panel-heading">
+                  <strong><span class="panel-title">Live Chatroom</span></strong>
+                </div>
+                    <div class="panel-body chatroom">
+                        {{#each messages}}
+                        <small>{{this.createdAt}} <strong><a href="/character/{{this.username}}" class="user-link">
+                           {{#if (eq this.username "Phasmastis")}}
+                            <span><img src="/img/crown.png" id="crown">{{this.username}}</span>
+                           {{else}}
+                           <span class="username-live">
+                           {{this.username}}
+                           </span>
+                           {{/if}}
+                        </a></strong> {{this.message}}</small><br>
+                        {{/each}}
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="message">
+                        <span class="input-group-btn" style="height: 0px">
+                            <button class="btn btn-default" type="button" id="sent-btn">Send</button>
+                        </span>
+                    </div>          
+            </div>
+
+</div>
+
+<script src="/js/revive.js"></script>
