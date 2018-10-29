@@ -108,27 +108,6 @@
     </div>
 
 
-    <div class="panel panel-default">
-            <div class="panel-heading">
-              <strong><span class="panel-title">Revive</span></strong>
-            </div>
-                <div class="panel-body text-center">
-                    <p>Restore HP to 100</p>
-                    <div id="reviveInfo">
-                 <a href="/revive/{{user._id}}" class="revive"><img src="/img/heart.png" alt=""> Revive</a>   
-                    </div>
-                 <p>Count: 
-                     <span id="reviveCount">
-                         {{#if revive.count}}
-                         {{revive.count}}
-                         {{else}}
-                         0
-                         {{/if}}
-                    </span>/ 3<br>
-                    Revives resets every hour
-                </p>
-                </div>
-            </div>
     </div>
 
 <script src="/js/userinterface.js"></script>   
