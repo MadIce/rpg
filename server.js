@@ -463,8 +463,9 @@ app.get('/arena', (req, res) => {
         if(user.health < 1) {
           return res.redirect('/');
         } 
-            User.aggregate([{
-                $lookup: {
+            User.aggregate([
+		{ "$match": { "_id": { "$ne": mongoose.Types.ObjectId(req.session.userId) }}},
+		    {$lookup: {
                     from: "boughtitems", // collection name in db
                     localField: "username",
                     foreignField: "username",
