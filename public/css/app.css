@@ -174,7 +174,7 @@ input[name=password]:focus {
 }
 
 .chatroom{
-    height:10em;
+    height:23em;
     overflow:scroll;
     overflow-x:hidden;
 }
