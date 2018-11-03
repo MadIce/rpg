@@ -113,7 +113,7 @@ app.get('/revive/:id', (req, res) => {
                      return res.redirect('/');
                  }                
             } else if(userRevive && userRevive.count === 3) {
-                return res.redirect('/dfg');
+                return res.redirect('/');
             }
             else {
 
