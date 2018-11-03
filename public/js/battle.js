@@ -121,7 +121,7 @@ socket.on('fightWin', (data) => {
 
                 
 
-    } else if(userHealth === 0) {
+    } else if(userHealth === 0 || userHealth < 0) {
         document.getElementById("fightInfo").innerHTML = '<strong>You</strong> have been defeated.<br>';
         attBtn.remove();
         $('#escapeBtn').remove(); 
