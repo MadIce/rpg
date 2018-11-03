@@ -244,7 +244,11 @@
                     <div class="panel-body text-center">
                         <p>Restore HP to 100</p>
                         <div id="reviveInfo">
+                                {{#if (eq revive.count 3)}}
+                                You reached the maximum limit of revives.
+                                {{else}}
                      <a href="/revive/{{user._id}}" class="revive"><img src="/img/heart.png" alt=""> Revive</a>   
+                            {{/if}}
                         </div>
                      <p>Count: 
                          <span id="reviveCount">
